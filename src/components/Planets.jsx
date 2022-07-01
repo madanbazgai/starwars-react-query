@@ -5,13 +5,12 @@ import Planet from "./Planet";
 const Planets = () => {
   const [page, setPage] = useState(1);
   const fetchPlanets = async ({ queryKey }) => {
-    const res = await fetch(`http://swapi.dev/api/planets/?page=${queryKey[1]}`);
+    const res = await fetch(`https://swapi.dev/api/planets/?page=${queryKey[1]}`);
     return res.json();
   };
   const { data, status, isPreviousData } = useQuery(["planets", page], fetchPlanets, {
     keepPreviousData: true,
   });
-  console.log(isPreviousData);
   return (
     <div>
       <h2>Planets</h2>
